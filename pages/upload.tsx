@@ -2,6 +2,7 @@ import Head from 'next/head'
 import { useCallback, useState, useEffect, useRef, useMemo } from 'react'
 import * as tf from '@tensorflow/tfjs'
 import { useDropzone } from 'react-dropzone'
+import { generateColor } from '../helpers/colors';
 
 const weights = '/300epochs/model.json'
 
@@ -16,6 +17,10 @@ export default function Home() {
 		const alpha = Array.from(Array(26)).map((e, i) => i + 65)
 		return alpha.map((x) => String.fromCharCode(x))
 	}, [])
+
+	const colorForName = useMemo(() => {
+		return names.map((str) => generateColor({str}))
+	}, [names])
 
 	// Crop image provided by user to canvas size (640x640)
 	const cropToCanvas = (image: any, canvas: HTMLCanvasElement, ctx: CanvasRenderingContext2D) => {
@@ -90,14 +95,15 @@ export default function Home() {
 			const height = y2 - y1;
 			const klass = names[classes_data[i]];
 			const score = scores_data[i].toFixed(2);
+			const colorHex = colorForName[classes_data[i]]
 
 			// Draw the bounding box.
-			ctx.strokeStyle = "#00FFFF";
+			ctx.strokeStyle = colorHex;
 			ctx.lineWidth = 4;
 			ctx.strokeRect(x1, y1, width, height);
 
 			// Draw the label background.
-			ctx.fillStyle = "#00FFFF";
+			ctx.fillStyle = colorHex;
 			const textWidth = ctx.measureText(klass + ":" + score).width;
 			const textHeight = parseInt(font, 10); // base 10
 			ctx.fillRect(x1, y1, textWidth + 4, textHeight + 4);
