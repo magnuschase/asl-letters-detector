@@ -5,7 +5,7 @@ const InformationCard = () => {
 	return (
 		<Card link="/info">
 			<div className="grid grid-cols-1 gap-4">
-				Information
+				<span className="text-ellipsis whitespace-nowrap overflow-hidden">Information</span>
 				<div className="text-sm">
 					Learn more about this app.
 				</div>
