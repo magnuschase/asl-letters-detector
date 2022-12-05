@@ -76,7 +76,7 @@ const Camera = () => {
 			// Get rid of the tensors to free up memory
 			tf.dispose(data)
 
-			var i;
+			let i;
       for (i = 0; i < valid_detections_data; ++i){
         let [x1, y1, x2, y2] = boxes_data.slice(i * 4, (i + 1) * 4) as unknown as number[]
         x1 *= 640;
