@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import { useCallback, useState, useEffect, useRef, useMemo } from 'react'
+import React, { useCallback, useState, useEffect, useRef, useMemo } from 'react'
 import * as tf from '@tensorflow/tfjs'
 import { useDropzone } from 'react-dropzone'
 import { generateColor } from '../helpers/colors';
@@ -10,7 +10,7 @@ export default function Home() {
 	const [model, setModel] = useState<tf.GraphModel<string | tf.io.IOHandler>>()
 	const [isLoading, setIsLoading] = useState<boolean>(false)
 	const [preview, setPreview] = useState<string>('')
-	const canvasRef = useRef<HTMLCanvasElement | null>(null)
+	const canvasRef = useRef<HTMLCanvasElement>(null as unknown as HTMLCanvasElement)
 	const [canvasDim, setCanvasDim] = useState('640')
 
 	const names = useMemo(() => {
@@ -53,7 +53,7 @@ export default function Home() {
 		setPreview(URL.createObjectURL(acceptedFiles[0]))
 	}, [])
 
-	const onImageChange = useCallback(async (e) => {
+	const onImageChange = useCallback(async (e: React.SyntheticEvent<HTMLImageElement>) => {
 		if (!canvasRef || !canvasRef.current || !model) return
 
 		const ctx = canvasRef.current.getContext('2d')
