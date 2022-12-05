@@ -61,6 +61,7 @@ const Camera = () => {
 			const [boxes, scores, classes, valid_detections] = data
 			
       // Draw mesh
+			if (!canvasRef || !canvasRef.current) return
       const ctx = canvasRef.current.getContext("2d");
 			const font = "16px sans-serif";
 			if (!ctx) throw new Error('Context for canvas not found')
