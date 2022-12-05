@@ -134,13 +134,16 @@ export default function Home() {
 			})
 	}, [])
 
-	window.addEventListener('resize', () => {
-		if (window.innerWidth > 640) {
-			setCanvasDim('640')
-			return
-		}
-		setCanvasDim('320')
-	})
+	if (typeof window !== "undefined") {
+		window.addEventListener('resize', () => {
+			if (window.innerWidth > 640) {
+				setCanvasDim('640')
+				return
+			}
+			setCanvasDim('320')
+		})
+	}
+
 
 	const { getRootProps, getInputProps, isDragActive } = useDropzone({ 
 		onDrop, 
