@@ -12,7 +12,7 @@ export default function Home() {
         <meta name="description" content="ASL Letters - Informations" />
       </Head>
 
-			<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-8 pt-8">
+			<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-8 py-8">
 				<DownloadCard/>
 				<DatasetCard/>
 				<GithubCard/>
