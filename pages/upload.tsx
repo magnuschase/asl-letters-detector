@@ -177,7 +177,7 @@ export default function Home() {
 							</div> 
       		}
 					{ !isDragActive && !preview && 
-							<p>Drag your file here (or click to select!)</p>
+							<p className="text-center px-4">Drag your file here (or click to select!)</p>
 					}
 
 					{ preview && (
