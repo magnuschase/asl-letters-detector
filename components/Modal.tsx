@@ -23,8 +23,8 @@ const Modal: React.FC<ModalPayload> = ({children, visible, setVisible}) =>
 			>
 				<div 
 					className={`
-						bg-emerald-900 rounded-lg grid grid-cols-1 overflow-hidden w-1/3 gap-4
-						aspect-square relative px-6 py-6
+						bg-emerald-900 rounded-lg grid grid-cols-1 overflow-hidden h-full lg:h-auto w-full lg:w-1/2 2xl:w-1/3 gap-4
+						md:aspect-square relative px-6 py-6
 					`}
 					onClick={(e) => e.stopPropagation()}
 				>
@@ -46,7 +46,9 @@ const Modal: React.FC<ModalPayload> = ({children, visible, setVisible}) =>
 								<path d="M20.197 2.837l.867.867-8.21 8.291 8.308 8.202-.866.867-8.292-8.21-8.23 8.311-.84-.84 8.213-8.32-8.312-8.231.84-.84 8.319 8.212 8.203-8.309zm-.009-2.837l-8.212 8.318-8.31-8.204-3.666 3.667 8.321 8.24-8.207 8.313 3.667 3.666 8.237-8.318 8.285 8.204 3.697-3.698-8.315-8.209 8.201-8.282-3.698-3.697z" />
 						</motion.svg>
 					</motion.button>
-					{children}
+					<div className="flex flex-col mt-12">
+						{children}
+					</div>
 				</div>
 			</motion.div>
 		)}
